@@ -38,11 +38,8 @@ $ git clone https://github.com/flo1207/php-app.git
 $ docker-compose up --build
 ```
 
-5. Une fois que les deux conteneurs sont builds, on lance la commande dans deux terminaux:
-
-```sh
-$ docker run -it php-app-phpapp bash
-```
+5. Une fois que les deux conteneurs sont builds, on va sur l'application docker puis `Containers -> php-app -> phpapp-container -> Exec`
+<br>On ouvre ensuite deux terminaux.
 
 6. Dans le premier terminal, on lance la commande:
 
@@ -62,7 +59,7 @@ $ php client.php
 $ docker ps
 ```
 
-9. Pour `arrêter` les processus, on utilise la commande:
+9. Pour `arrêter` les processus, on utilise ctrl+c puis la commande:
 
 ```sh
 $ docker-compose down
@@ -86,4 +83,19 @@ $ docker build -t video-php-app .
 
 ```sh
 $ docker run -d -p 8080:80 --name video-php-container video-php-app
+```
+
+6. Pour se rendre dans l'application, on effectue la commande:
+
+```sh
+$ docker run -it video-php-app
+```
+
+7. Pour supprimer le container:
+
+```sh
+$ docker stop video-php-app
+```
+```sh
+$ docker rm video-php-app
 ```
