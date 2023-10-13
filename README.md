@@ -80,7 +80,7 @@ $ git clone https://github.com/flo1207/php-app.git
 4. Lancer la commande de build
 
 ```sh
-$ ddocker build -t video-php-app .
+$ docker build -t video-php-app .
 ```
 5. Executer la commande pour lancer le container
 
