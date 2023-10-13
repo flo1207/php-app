@@ -6,7 +6,7 @@ use prodigyview\util\FileManager;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 //Start RabbitMQ Server
-$connection = new AMQPStreamConnection('127.0.0.1', 5672, 'guest', 'guest');
+$connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
 $channel->queue_declare('video_queue', 	//$queue - Either sets the queue or creates it if not exist
@@ -14,7 +14,7 @@ $channel->queue_declare('video_queue', 	//$queue - Either sets the queue or crea
 						true,			//$durable - Data will persist if crash or restart occurs
 						false,			//$exclusive - Only one connection will usee, and deleted when closed
 						false			//$auto_delete - Queue is deleted when consumer is no longer subscribes
-						);
+);
 
 /**
  * Define the callback function
@@ -24,8 +24,8 @@ $callback = function($msg) {
 	$data = json_decode($msg->body, true);
 
 	//Detect if wget and ffmpeg are installed
-	exec("man wget", $wget_exist);
-	exec("man ffmpeg", $ffmpeg_exist);
+	exec("command -v wget", $wget_exist);
+	exec("command -v ffmpeg", $ffmpeg_exist);
 
 	if ($wget_exist) {
 		//Use wget to download the video.

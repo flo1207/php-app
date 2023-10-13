@@ -1,0 +1,13 @@
+version: '3'
+services:
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: rabbitmq
+
+  phpapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phpapp-container
+    ports:
+      - "8080:80"
